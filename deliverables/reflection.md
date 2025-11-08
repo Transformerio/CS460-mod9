@@ -4,7 +4,7 @@ In this reflection, I will be responding to the questions listed in the module 9
 
 To perform a SBOM analysis on the M5StamPLC, I used the following tools: Syft and Trivy.
 
-![](/images/a.png)<br><center>Screenshot of Syft and Trivy output</center>
+![](../images/a.png)<br><center>Screenshot of Syft and Trivy output</center>
 
 Number of components each tool reported:
 - Syft: 8 components
@@ -16,7 +16,7 @@ One key difference between using SPDX SBOM and the CycloneDX SBOM is that SPDX s
 
 When performing a vulnerability analysis on the SBOMs using Grype, I discovered that there are no vulnerabilities in the SBOM.
 
-![](/images/c.png)<br><center>Screenshot of grype output</center>
+![](../images/c.png)<br><center>Screenshot of grype output</center>
 
 |CVE|Severity|Component|Version|Comment|
 |-|-|-|-|-|
@@ -26,5 +26,5 @@ When performing a vulnerability analysis on the SBOMs using Grype, I discovered 
 | n/a | n/a | n/a | n/a | n/a |
 | n/a | n/a | n/a | n/a | n/a |
 
-The reason why I believe that no CVEs were found were because of a few reasons. One reason could be the reason that Syft discovered no meaningful components and only listed the current directory as a component. This gives very little information to the grype tool. Additionally, there are very little files and dependencies, most of the tools are custom built. For the dependencies that are there, they’re very popular libraries meaning that updates and bug fixes are way more common and prevalent.
+The reason why I believe that no CVEs were found were because of a few reasons. One reason could be the reason that a majority of the packages that Syft scanned were custom made. This means that their hashes wouldn't match some vulnerably libraries in grype's database. Additionally, the depth of the scan by grype might not be totally exhaustive meaning that it didn't check line by line of code in each file. This could allow for exploits, like buffer overflows, to be overlooked.
 
